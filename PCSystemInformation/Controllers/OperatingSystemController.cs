@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using PCSystemInformation.SystemInformation;
 using System.Windows.Forms;
+using PCSystemInformation.Models;
 
 namespace PCSystemInformation.Controllers
 {
@@ -15,16 +16,11 @@ namespace PCSystemInformation.Controllers
         {
             operatingSystem = new OperatingInformation();
         }
-        public Dictionary<String, String> GetOperatingSystem()
+        public InformationBlock GetOperatingSystem()
         {
-            Dictionary<String, String> pairs = new Dictionary<string, string>();
-            pairs.Add("Операционная система", operatingSystem.GetVersion());
-            return pairs;
-            /*List <ListViewItem> listViewItems = new List<ListViewItem>();
-            ListViewItem items = new ListViewItem("Операционная система");
-            items.SubItems.Add(operatingSystem.GetVersion());
-            listViewItems.Add(items);
-            return listViewItems;*/
+            InformationBlock block = new InformationBlock("Компьютер");
+            block.elements.Add(new Element("Операционная система", operatingSystem.GetVersion()));
+            return block;
         }
     }
 }

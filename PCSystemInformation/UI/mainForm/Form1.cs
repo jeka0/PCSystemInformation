@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using PCSystemInformation.Controllers;
+using PCSystemInformation.Models;
 
 namespace PCSystemInformation
 {
@@ -23,10 +24,10 @@ namespace PCSystemInformation
             treeView.Nodes.Add("2");
             treeView.Nodes.Add("3");
             OperatingSystemController controller = new OperatingSystemController();
-            foreach (KeyValuePair<String, String> entry in controller.GetOperatingSystem())
+            foreach (Element element in controller.GetOperatingSystem().elements)
             {
-                ListViewItem item = new ListViewItem(entry.Key);
-                item.SubItems.Add(entry.Value);
+                ListViewItem item = new ListViewItem(element.Name);
+                foreach(String part in element.parts)item.SubItems.Add(part);
                 listView.Items.Add(item);
             }
 
