@@ -50,7 +50,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Data\Data.cs" />
+    <Compile Include="Controllers\OperatingSystemController.cs" />
+    <Compile Include="SystemInformation\IOperatingSystem.cs" />
+    <Compile Include="SystemInformation\OperatingInformation.cs" />
     <Compile Include="UI\mainForm\Form1.cs">
       <SubType>Form</SubType>
     </Compile>

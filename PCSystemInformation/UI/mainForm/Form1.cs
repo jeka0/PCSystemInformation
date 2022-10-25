@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using DataSystemInformation;
+using PCSystemInformation.Controllers;
 
 namespace PCSystemInformation
 {
@@ -17,16 +17,18 @@ namespace PCSystemInformation
         {
             InitializeComponent();
         }
-        ListViewItem items;
         private void Form1_Load(object sender, EventArgs e)
         {
-            Data data = new Data();
             treeView.Nodes.Add("1");
             treeView.Nodes.Add("2");
             treeView.Nodes.Add("3");
-            items = new ListViewItem("adada");
-            items.SubItems.Add(data.name);
-            listView.Items.Add(items);
+            OperatingSystemController controller = new OperatingSystemController();
+            foreach (KeyValuePair<String, String> entry in controller.GetOperatingSystem())
+            {
+                ListViewItem item = new ListViewItem(entry.Key);
+                item.SubItems.Add(entry.Value);
+                listView.Items.Add(item);
+            }
 
         }
 
