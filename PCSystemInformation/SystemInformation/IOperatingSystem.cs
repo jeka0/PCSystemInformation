@@ -9,5 +9,9 @@ namespace PCSystemInformation.SystemInformation
     interface IOperatingSystem
     {
         String GetVersion();
+        String GetCulture();
+        String GetInstalledCulture();
+        String FriendlyName();
+        String GetType();
     }
 }

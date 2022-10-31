@@ -19,7 +19,11 @@ namespace PCSystemInformation.Controllers
         public InformationBlock GetOperatingSystem()
         {
             InformationBlock block = new InformationBlock("Компьютер");
-            block.elements.Add(new Element("Операционная система", operatingSystem.GetVersion()));
+            block.elements.Add(new Element("Операционная система", operatingSystem.FriendlyName()));
+            block.elements.Add(new Element("Язык ОС", operatingSystem.GetCulture()));
+            block.elements.Add(new Element("Язык установщика ОС", operatingSystem.GetCulture()));
+            block.elements.Add(new Element("Тип ядра ОС", operatingSystem.GetType()));
+            block.elements.Add(new Element("Версия ОС", operatingSystem.GetVersion()));
             return block;
         }
     }
