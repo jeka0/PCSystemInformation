@@ -11,14 +11,32 @@ namespace PCSystemInformation.SystemInformation
 {
     public class OperatingInformation : IOperatingSystem
     {
-
+        private const String CURRENT_VERSION = @"SOFTWARE\Microsoft\Windows NT\CurrentVersion";
+        private RegistryKey LocalMachine;
         public OperatingInformation()
         {
-
+            RegistryView view;
+            if (Environment.Is64BitOperatingSystem) view = RegistryView.Registry64;             
+            else view = RegistryView.Registry32;
+            this.LocalMachine = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, view);
         }
         public String GetVersion()
         {
-            return HKLM_GetString(@"SOFTWARE\Microsoft\Windows NT\CurrentVersion", "CurrentMajorVersionNumber");
+            StringBuilder stringBuilder = new StringBuilder();
+            stringBuilder.Append(HKLM_GetString(CURRENT_VERSION, "CurrentMajorVersionNumber") + '.');
+            stringBuilder.Append(HKLM_GetString(CURRENT_VERSION, "CurrentMinorVersionNumber") + '.');
+            stringBuilder.Append(HKLM_GetString(CURRENT_VERSION, "CurrentBuildNumber") + '.');
+            stringBuilder.Append(HKLM_GetString(CURRENT_VERSION, "UBR"));
+            return stringBuilder.ToString();
+        }
+        public String GetDate()
+        {
+           DateTime date = DateTime.FromFileTimeUtc(Convert.ToInt64(HKLM_GetValue(CURRENT_VERSION, "InstallTime")));
+            return date.Date.ToString();
+        }
+        public String GetBaseDir()
+        {
+            return HKLM_GetString(CURRENT_VERSION, "PathName");
         }
         public String GetCulture()
         {
@@ -30,29 +48,43 @@ namespace PCSystemInformation.SystemInformation
         }
         public String GetType()
         {
-            return HKLM_GetString(@"SOFTWARE\Microsoft\Windows NT\CurrentVersion", "CurrentType");
+            return HKLM_GetString(CURRENT_VERSION, "CurrentType");
         }
-        private String HKLM_GetString(String path, String key)
+        private object HKLM_GetValue(String path, String key)
         {
             try
             {
-                RegistryKey rk = Registry.LocalMachine.OpenSubKey(path);
-                if (rk == null) return "";
-                return (string)rk.GetValue(key);
+                RegistryKey rk = LocalMachine.OpenSubKey(path);
+                if (rk == null) return null;
+                return rk.GetValue(key);
             }
-            catch { return ""; }
+            catch (Exception e) { return null; }
+        }
+        private String HKLM_GetString(String path, String key)
+        {
+            object value = HKLM_GetValue(path, key);
+            if (value == null) return "";
+            return value.ToString();
         }
 
         public String FriendlyName()
         {
-            string ProductName = HKLM_GetString(@"SOFTWARE\Microsoft\Windows NT\CurrentVersion", "ProductName");
-            string CSDVersion = HKLM_GetString(@"SOFTWARE\Microsoft\Windows NT\CurrentVersion", "CSDVersion");
+            string ProductName = HKLM_GetString(CURRENT_VERSION, "ProductName");
+            string CSDVersion = HKLM_GetString(CURRENT_VERSION, "CSDVersion");
             if (ProductName != "")
             {
                 return (ProductName.StartsWith("Microsoft") ? "" : "Microsoft ") + ProductName +
                             (CSDVersion != "" ? " " + CSDVersion : "");
             }
             return "";
+        }
+        public String GetUserName()
+        {
+            return Environment.UserName;
+        }
+        public String GetProductID()
+        {
+            return HKLM_GetString(CURRENT_VERSION, "ProductId");
         }
     }
 }

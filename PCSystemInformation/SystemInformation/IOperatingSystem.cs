@@ -13,5 +13,9 @@ namespace PCSystemInformation.SystemInformation
         String GetInstalledCulture();
         String FriendlyName();
         String GetType();
+        String GetDate();
+        String GetBaseDir();
+        String GetUserName();
+        String GetProductID();
     }
 }

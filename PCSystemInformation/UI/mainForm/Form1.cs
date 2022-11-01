@@ -24,15 +24,21 @@ namespace PCSystemInformation
             treeView.Nodes.Add("2");
             treeView.Nodes.Add("3");
             OperatingSystemController controller = new OperatingSystemController();
-            foreach (Element element in controller.GetOperatingSystem().elements)
-            {
-                ListViewItem item = new ListViewItem(element.Name);
-                foreach(String part in element.parts)item.SubItems.Add(part);
-                listView.Items.Add(item);
-            }
+            AddBlock(controller.GetOperatingSystem());
+            AddBlock(controller.GetUserInformation());
 
         }
 
+        private void AddBlock(InformationBlock block)
+        {
+            listView.Items.Add(block.Name);
+            foreach (Element element in block.elements)
+            {
+                ListViewItem item = new ListViewItem(element.Name);
+                foreach (String part in element.parts) item.SubItems.Add(part);
+                listView.Items.Add(item);
+            }
+        }
         private void treeView1_MouseClick(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Right)

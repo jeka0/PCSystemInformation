@@ -24,6 +24,15 @@ namespace PCSystemInformation.Controllers
             block.elements.Add(new Element("Язык установщика ОС", operatingSystem.GetCulture()));
             block.elements.Add(new Element("Тип ядра ОС", operatingSystem.GetType()));
             block.elements.Add(new Element("Версия ОС", operatingSystem.GetVersion()));
+            block.elements.Add(new Element("Дата установки ОС", operatingSystem.GetDate()));
+            block.elements.Add(new Element("Основная папка ОС", operatingSystem.GetBaseDir()));
+            return block;
+        }
+        public InformationBlock GetUserInformation()
+        {
+            InformationBlock block = new InformationBlock("Лицензионная инфформация");
+            block.elements.Add(new Element("Зарегистрированный пользователь", operatingSystem.GetUserName()));
+            block.elements.Add(new Element("ID продукта", operatingSystem.GetProductID()));
             return block;
         }
     }
