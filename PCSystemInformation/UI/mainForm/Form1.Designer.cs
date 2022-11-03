@@ -40,10 +40,10 @@ namespace PCSystemInformation
             this.treeView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.treeView.Location = new System.Drawing.Point(0, 0);
-            this.treeView.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.treeView.MinimumSize = new System.Drawing.Size(86, 294);
+            this.treeView.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.treeView.MinimumSize = new System.Drawing.Size(113, 361);
             this.treeView.Name = "treeView";
-            this.treeView.Size = new System.Drawing.Size(193, 343);
+            this.treeView.Size = new System.Drawing.Size(256, 571);
             this.treeView.TabIndex = 0;
             this.treeView.MouseClick += new System.Windows.Forms.MouseEventHandler(this.treeView1_MouseClick);
             // 
@@ -57,11 +57,11 @@ namespace PCSystemInformation
             this.column2});
             this.listView.FullRowSelect = true;
             this.listView.HideSelection = false;
-            this.listView.Location = new System.Drawing.Point(196, 0);
-            this.listView.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.listView.MinimumSize = new System.Drawing.Size(141, 294);
+            this.listView.Location = new System.Drawing.Point(261, 0);
+            this.listView.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.listView.MinimumSize = new System.Drawing.Size(187, 361);
             this.listView.Name = "listView";
-            this.listView.Size = new System.Drawing.Size(608, 343);
+            this.listView.Size = new System.Drawing.Size(932, 571);
             this.listView.TabIndex = 1;
             this.listView.UseCompatibleStateImageBehavior = false;
             this.listView.View = System.Windows.Forms.View.Details;
@@ -69,7 +69,7 @@ namespace PCSystemInformation
             // column1
             // 
             this.column1.Text = "Column1";
-            this.column1.Width = 100;
+            this.column1.Width = 200;
             // 
             // column2
             // 
@@ -78,12 +78,12 @@ namespace PCSystemInformation
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(804, 341);
+            this.ClientSize = new System.Drawing.Size(1195, 570);
             this.Controls.Add(this.listView);
             this.Controls.Add(this.treeView);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);

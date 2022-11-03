@@ -24,6 +24,8 @@ namespace PCSystemInformation
             treeView.Nodes.Add("2");
             treeView.Nodes.Add("3");
             OperatingSystemController controller = new OperatingSystemController();
+            ComputerInformationController computerContoller = new ComputerInformationController();
+            AddBlock(computerContoller.GetGeneralInformation());
             AddBlock(controller.GetOperatingSystem());
             AddBlock(controller.GetUserInformation());
 

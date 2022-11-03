@@ -5,38 +5,34 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Management;
 using System.Globalization;
-using Microsoft.Win32;
 
 namespace PCSystemInformation.SystemInformation
 {
     public class OperatingInformation : IOperatingSystem
     {
         private const String CURRENT_VERSION = @"SOFTWARE\Microsoft\Windows NT\CurrentVersion";
-        private RegistryKey LocalMachine;
+        private RegistryAccess registry;
         public OperatingInformation()
         {
-            RegistryView view;
-            if (Environment.Is64BitOperatingSystem) view = RegistryView.Registry64;             
-            else view = RegistryView.Registry32;
-            this.LocalMachine = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, view);
+            this.registry = new RegistryAccess();
         }
         public String GetVersion()
         {
             StringBuilder stringBuilder = new StringBuilder();
-            stringBuilder.Append(HKLM_GetString(CURRENT_VERSION, "CurrentMajorVersionNumber") + '.');
-            stringBuilder.Append(HKLM_GetString(CURRENT_VERSION, "CurrentMinorVersionNumber") + '.');
-            stringBuilder.Append(HKLM_GetString(CURRENT_VERSION, "CurrentBuildNumber") + '.');
-            stringBuilder.Append(HKLM_GetString(CURRENT_VERSION, "UBR"));
+            stringBuilder.Append(registry.HKLM_GetString(CURRENT_VERSION, "CurrentMajorVersionNumber") + '.');
+            stringBuilder.Append(registry.HKLM_GetString(CURRENT_VERSION, "CurrentMinorVersionNumber") + '.');
+            stringBuilder.Append(registry.HKLM_GetString(CURRENT_VERSION, "CurrentBuildNumber") + '.');
+            stringBuilder.Append(registry.HKLM_GetString(CURRENT_VERSION, "UBR"));
             return stringBuilder.ToString();
         }
         public String GetDate()
         {
-           DateTime date = DateTime.FromFileTimeUtc(Convert.ToInt64(HKLM_GetValue(CURRENT_VERSION, "InstallTime")));
-            return date.Date.ToString();
+           DateTime date = DateTime.FromFileTimeUtc(Convert.ToInt64(registry.HKLM_GetValue(CURRENT_VERSION, "InstallTime")));
+            return date.Date.ToString().Split()[0];
         }
         public String GetBaseDir()
         {
-            return HKLM_GetString(CURRENT_VERSION, "PathName");
+            return registry.HKLM_GetString(CURRENT_VERSION, "PathName");
         }
         public String GetCulture()
         {
@@ -48,29 +44,14 @@ namespace PCSystemInformation.SystemInformation
         }
         public String GetType()
         {
-            return HKLM_GetString(CURRENT_VERSION, "CurrentType");
+            return registry.HKLM_GetString(CURRENT_VERSION, "CurrentType");
         }
-        private object HKLM_GetValue(String path, String key)
-        {
-            try
-            {
-                RegistryKey rk = LocalMachine.OpenSubKey(path);
-                if (rk == null) return null;
-                return rk.GetValue(key);
-            }
-            catch (Exception e) { return null; }
-        }
-        private String HKLM_GetString(String path, String key)
-        {
-            object value = HKLM_GetValue(path, key);
-            if (value == null) return "";
-            return value.ToString();
-        }
+        
 
         public String FriendlyName()
         {
-            string ProductName = HKLM_GetString(CURRENT_VERSION, "ProductName");
-            string CSDVersion = HKLM_GetString(CURRENT_VERSION, "CSDVersion");
+            string ProductName = registry.HKLM_GetString(CURRENT_VERSION, "ProductName");
+            string CSDVersion = registry.HKLM_GetString(CURRENT_VERSION, "CSDVersion");
             if (ProductName != "")
             {
                 return (ProductName.StartsWith("Microsoft") ? "" : "Microsoft ") + ProductName +
@@ -84,7 +65,18 @@ namespace PCSystemInformation.SystemInformation
         }
         public String GetProductID()
         {
-            return HKLM_GetString(CURRENT_VERSION, "ProductId");
+            return registry.HKLM_GetString(CURRENT_VERSION, "ProductId");
+        }
+        public String GetProductKey()
+        {
+
+            return null;
+        }
+        public String GetServicePack()
+        {
+            String value = Environment.OSVersion.ServicePack;
+            if (value == null || value == "") return "-";
+            return value;
         }
     }
 }
