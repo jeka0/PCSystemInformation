@@ -8,5 +8,8 @@ namespace PCSystemInformation.SystemInformation
 {
     interface IMotherboardInformation
     {
+        String GetBoardSerialNumbers();
+        String GetBoardName();
+        String GetManufacturer();
     }
 }

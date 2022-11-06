@@ -51,11 +51,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\ComputerInformationController.cs" />
+    <Compile Include="Controllers\CPUInformationController.cs" />
+    <Compile Include="Controllers\MotherboardInformationConstoller.cs" />
     <Compile Include="Controllers\OperatingSystemController.cs" />
     <Compile Include="Models\Element.cs" />
     <Compile Include="Models\InformationBlock.cs" />
     <Compile Include="SystemInformation\ComputerInformation.cs" />
+    <Compile Include="SystemInformation\CPUInformation.cs" />
     <Compile Include="SystemInformation\IComputerInformation.cs" />
+    <Compile Include="SystemInformation\ICPUInformation.cs" />
     <Compile Include="SystemInformation\IMotherboardInformation.cs" />
     <Compile Include="SystemInformation\IOperatingSystem.cs" />
     <Compile Include="SystemInformation\MotherboardInformation.cs" />

@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 using System.Windows.Forms;
 using PCSystemInformation.Controllers;
 using PCSystemInformation.Models;
@@ -20,15 +21,10 @@ namespace PCSystemInformation
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-            treeView.Nodes.Add("1");
-            treeView.Nodes.Add("2");
-            treeView.Nodes.Add("3");
-            OperatingSystemController controller = new OperatingSystemController();
-            ComputerInformationController computerContoller = new ComputerInformationController();
-            AddBlock(computerContoller.GetGeneralInformation());
-            AddBlock(controller.GetOperatingSystem());
-            AddBlock(controller.GetUserInformation());
-
+            treeView.Nodes.Add("Компьютер");
+            treeView.Nodes.Add("Операционная система");
+            treeView.Nodes.Add("Материнская плата");
+            treeView.Nodes.Add("ЦП");
         }
 
         private void AddBlock(InformationBlock block)
@@ -47,6 +43,40 @@ namespace PCSystemInformation
             {
                 ((TreeView)sender).SelectedNode = ((TreeView)sender).GetNodeAt(e.X, e.Y);
                 ((TreeView)sender).Focus();
+            }
+        }
+
+        private void treeView_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+            listView.Items.Clear();
+            switch (treeView.SelectedNode.Text)
+            {
+                case "Компьютер":
+                    ComputerInformationController computerContoller = new ComputerInformationController();
+                    AddBlock(computerContoller.GetGeneralInformation());
+                    break;
+                case "Операционная система":
+                    OperatingSystemController controller = new OperatingSystemController();
+                    AddBlock(controller.GetOperatingSystem());
+                    AddBlock(controller.GetUserInformation());
+                    break;
+                case "Материнская плата":
+                    MotherboardInformationConstoller motherboardController = new MotherboardInformationConstoller();
+                    AddBlock(motherboardController.GetMotherboardProperties());
+                    AddBlock(motherboardController.GetManufacturerInformation());
+                    break;
+                case "ЦП":
+                    CPUInformationController cpuInformationController = new CPUInformationController();
+                    new Thread(() =>
+                    {
+                        InformationBlock block = cpuInformationController.GetCPUProperties();
+                        listView.Invoke(new Action(() => { AddBlock(block); }));
+                        block = cpuInformationController.GetManufacturerInformation();
+                        listView.Invoke(new Action(() => { AddBlock(block); }));
+                        block = cpuInformationController.GetMultiCPU();
+                        listView.Invoke(new Action(() => { AddBlock(block); }));
+                    }).Start();
+                    break;
             }
         }
     }
