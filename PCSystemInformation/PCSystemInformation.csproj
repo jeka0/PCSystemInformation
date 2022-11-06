@@ -56,7 +56,9 @@
     <Compile Include="Models\InformationBlock.cs" />
     <Compile Include="SystemInformation\ComputerInformation.cs" />
     <Compile Include="SystemInformation\IComputerInformation.cs" />
+    <Compile Include="SystemInformation\IMotherboardInformation.cs" />
     <Compile Include="SystemInformation\IOperatingSystem.cs" />
+    <Compile Include="SystemInformation\MotherboardInformation.cs" />
     <Compile Include="SystemInformation\OperatingInformation.cs" />
     <Compile Include="SystemInformation\RegistryAccess.cs" />
     <Compile Include="UI\mainForm\Form1.cs">
