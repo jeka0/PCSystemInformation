@@ -25,6 +25,7 @@ namespace PCSystemInformation
             treeView.Nodes.Add("Операционная система");
             treeView.Nodes.Add("Материнская плата");
             treeView.Nodes.Add("ЦП");
+            treeView.Nodes.Add("Дисплей");
         }
 
         private void AddBlock(InformationBlock block)
@@ -76,6 +77,10 @@ namespace PCSystemInformation
                         block = cpuInformationController.GetMultiCPU();
                         listView.Invoke(new Action(() => { AddBlock(block); }));
                     }).Start();
+                    break;
+                case "Дисплей":
+                    DisplayInformationController displayController = new DisplayInformationController();
+                    AddBlock(displayController.GetDisplayProperties());
                     break;
             }
         }

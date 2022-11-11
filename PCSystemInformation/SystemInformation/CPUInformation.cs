@@ -165,10 +165,7 @@ namespace PCSystemInformation.SystemInformation
                 }
                 return "";
             }
-            catch (Exception e)
-            {
-                return "";
-            }
+            catch { return ""; }
         }
     }
 }

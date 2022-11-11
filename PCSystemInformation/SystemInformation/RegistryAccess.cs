@@ -24,7 +24,7 @@ namespace PCSystemInformation.SystemInformation
                 if (rk == null) return null;
                 return rk.GetValue(key);
             }
-            catch (Exception e) { return null; }
+            catch { return null; }
         }
         public String HKLM_GetString(String path, String key)
         {
