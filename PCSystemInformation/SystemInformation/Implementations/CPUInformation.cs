@@ -12,6 +12,7 @@ namespace PCSystemInformation.SystemInformation
         private const String ROOT = "root\\CIMV2";
         private const String Device = "SELECT * FROM Win32_Processor";
         private RegistryAccess registry;
+        private ManagementObject querObj;
         private ManagementObjectSearcher cpu;
         private String core;
         private String name;
@@ -19,6 +20,7 @@ namespace PCSystemInformation.SystemInformation
         {
             this.registry = new RegistryAccess();
             this.cpu = new ManagementObjectSearcher(ROOT, Device);
+            foreach (ManagementObject querObj in cpu.Get()) { this.querObj = querObj; break; }
         }
         public String GetName()
         {
@@ -51,7 +53,7 @@ namespace PCSystemInformation.SystemInformation
         }
         public String GetCurrentClockSpeed()
         {
-            return GetCPUInformation("CurrentClockSpeed", cpu);
+            return GetCPUInformation("CurrentClockSpeed", cpu) + " МГц";
         }
         public String GetCurrentVoltage()
         {
@@ -144,12 +146,12 @@ namespace PCSystemInformation.SystemInformation
         public String GetCore()
         {
             if (name == null) name = GetCPUInformation("Name", cpu);
-            if (core==null)core = name + ", " + GetCPUInformation("MaxClockSpeed", cpu) + " МГц";
+            if (core==null)core = name + ", " + GetMaxClockSpeed();
             return core;
         }
         public String GetMaxClockSpeed()
         {
-            return GetCPUInformation("MaxClockSpeed", cpu);
+            return GetCPUInformation("MaxClockSpeed", cpu) + " МГц";
         }
         public int GetNumbersOfCores()
         {
@@ -159,11 +161,7 @@ namespace PCSystemInformation.SystemInformation
         {
             try
             {
-                foreach (ManagementObject querObj in searcher.Get())
-                {
-                    return querObj[str].ToString();
-                }
-                return "";
+               return querObj[str].ToString();
             }
             catch { return ""; }
         }

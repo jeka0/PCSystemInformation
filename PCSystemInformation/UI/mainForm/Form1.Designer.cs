@@ -40,7 +40,7 @@ namespace PCSystemInformation
             this.treeView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.treeView.Location = new System.Drawing.Point(0, 0);
-            this.treeView.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.treeView.Margin = new System.Windows.Forms.Padding(2);
             this.treeView.MinimumSize = new System.Drawing.Size(86, 294);
             this.treeView.Name = "treeView";
             this.treeView.Size = new System.Drawing.Size(193, 465);
@@ -59,9 +59,10 @@ namespace PCSystemInformation
             this.listView.FullRowSelect = true;
             this.listView.HideSelection = false;
             this.listView.Location = new System.Drawing.Point(196, 0);
-            this.listView.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.listView.Margin = new System.Windows.Forms.Padding(2);
             this.listView.MinimumSize = new System.Drawing.Size(141, 294);
             this.listView.Name = "listView";
+            this.listView.ShowItemToolTips = true;
             this.listView.Size = new System.Drawing.Size(700, 465);
             this.listView.TabIndex = 1;
             this.listView.UseCompatibleStateImageBehavior = false;
@@ -84,7 +85,7 @@ namespace PCSystemInformation
             this.ClientSize = new System.Drawing.Size(896, 463);
             this.Controls.Add(this.listView);
             this.Controls.Add(this.treeView);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);

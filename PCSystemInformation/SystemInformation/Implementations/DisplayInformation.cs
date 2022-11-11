@@ -11,15 +11,12 @@ namespace PCSystemInformation.SystemInformation
     {
         private RegistryAccess registry;
         private ManagementObjectSearcher searcher;
-        private ManagementObjectSearcher videosearcher;
         private const String ROOT = "root\\CIMV2";
         private const String DEVICE = "SELECT * FROM Win32_DesktopMonitor";
-        private const String VIDEO_CONTROLLER = "SELECT * FROM Win32_VideoController";
         public DisplayInformation()
         {
             registry = new RegistryAccess();
             searcher = new ManagementObjectSearcher(ROOT, DEVICE);
-            videosearcher = new ManagementObjectSearcher(ROOT, VIDEO_CONTROLLER);
         }
         public String GetName()
         {
@@ -27,7 +24,7 @@ namespace PCSystemInformation.SystemInformation
         }
         public String GetAvailability()
         {
-            return GetInformation("Availability", videosearcher);
+            return GetInformation("Availability", searcher);
         }
         public String GetPNPDeviceID()
         {

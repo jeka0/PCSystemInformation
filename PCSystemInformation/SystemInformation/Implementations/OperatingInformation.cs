@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Management;
 using System.Globalization;
+using PCSystemInformation.Models;
 
 namespace PCSystemInformation.SystemInformation
 {
@@ -69,8 +70,7 @@ namespace PCSystemInformation.SystemInformation
         }
         public String GetProductKey()
         {
-
-            return null;
+            return null; 
         }
         public String GetServicePack()
         {

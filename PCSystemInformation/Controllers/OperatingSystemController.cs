@@ -34,7 +34,7 @@ namespace PCSystemInformation.Controllers
             InformationBlock block = new InformationBlock("Лицензионная инфформация");
             block.elements.Add(new Element("Зарегистрированный пользователь", operatingSystem.GetUserName()));
             block.elements.Add(new Element("ID продукта", operatingSystem.GetProductID()));
-            block.elements.Add(new Element("Ключ продукта", operatingSystem.GetProductKey()));//???
+           // block.elements.Add(new Element("Ключ продукта", operatingSystem.GetProductKey()));
             return block;
         }
     }

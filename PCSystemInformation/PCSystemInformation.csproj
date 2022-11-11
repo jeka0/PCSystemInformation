@@ -55,19 +55,22 @@
     <Compile Include="Controllers\DisplayInformationController.cs" />
     <Compile Include="Controllers\MotherboardInformationConstoller.cs" />
     <Compile Include="Controllers\OperatingSystemController.cs" />
+    <Compile Include="Controllers\VIdeoInformationController.cs" />
     <Compile Include="Models\Element.cs" />
     <Compile Include="Models\InformationBlock.cs" />
-    <Compile Include="SystemInformation\ComputerInformation.cs" />
-    <Compile Include="SystemInformation\CPUInformation.cs" />
-    <Compile Include="SystemInformation\DisplayInformation.cs" />
-    <Compile Include="SystemInformation\IComputerInformation.cs" />
-    <Compile Include="SystemInformation\ICPUInformation.cs" />
-    <Compile Include="SystemInformation\IDisplayInformation.cs" />
-    <Compile Include="SystemInformation\IMotherboardInformation.cs" />
-    <Compile Include="SystemInformation\IOperatingSystem.cs" />
-    <Compile Include="SystemInformation\MotherboardInformation.cs" />
-    <Compile Include="SystemInformation\OperatingInformation.cs" />
+    <Compile Include="SystemInformation\Implementations\ComputerInformation.cs" />
+    <Compile Include="SystemInformation\Implementations\CPUInformation.cs" />
+    <Compile Include="SystemInformation\Implementations\DisplayInformation.cs" />
+    <Compile Include="SystemInformation\Interfaces\IComputerInformation.cs" />
+    <Compile Include="SystemInformation\Interfaces\ICPUInformation.cs" />
+    <Compile Include="SystemInformation\Interfaces\IDisplayInformation.cs" />
+    <Compile Include="SystemInformation\Interfaces\IMotherboardInformation.cs" />
+    <Compile Include="SystemInformation\Interfaces\IOperatingSystem.cs" />
+    <Compile Include="SystemInformation\Interfaces\IVIdeoInformation.cs" />
+    <Compile Include="SystemInformation\Implementations\MotherboardInformation.cs" />
+    <Compile Include="SystemInformation\Implementations\OperatingInformation.cs" />
     <Compile Include="SystemInformation\RegistryAccess.cs" />
+    <Compile Include="SystemInformation\Implementations\VIdeoInformation.cs" />
     <Compile Include="UI\mainForm\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -102,5 +105,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

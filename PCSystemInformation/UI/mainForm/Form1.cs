@@ -15,6 +15,7 @@ namespace PCSystemInformation
 {
     public partial class Form1 : Form
     {
+        private Thread thread;
         public Form1()
         {
             InitializeComponent();
@@ -26,17 +27,22 @@ namespace PCSystemInformation
             treeView.Nodes.Add("Материнская плата");
             treeView.Nodes.Add("ЦП");
             treeView.Nodes.Add("Дисплей");
+            treeView.Nodes.Add("Video");
         }
 
         private void AddBlock(InformationBlock block)
         {
-            listView.Items.Add(block.Name);
-            foreach (Element element in block.elements)
+            listView.Invoke(new Action(() =>
             {
-                ListViewItem item = new ListViewItem(element.Name);
-                foreach (String part in element.parts) item.SubItems.Add(part);
-                listView.Items.Add(item);
-            }
+                listView.Items.Add(block.Name);
+                foreach (Element element in block.elements)
+                {
+                    ListViewItem item = new ListViewItem(element.Name);
+                    foreach (String part in element.parts) item.SubItems.Add(part);
+                    listView.Items.Add(item);
+                }
+                listView.Items.Add("");
+            }));
         }
         private void treeView1_MouseClick(object sender, MouseEventArgs e)
         {
@@ -49,40 +55,50 @@ namespace PCSystemInformation
 
         private void treeView_AfterSelect(object sender, TreeViewEventArgs e)
         {
+            if (thread != null) { thread.Abort(); thread = null; }
             listView.Items.Clear();
-            switch (treeView.SelectedNode.Text)
+            String text = treeView.SelectedNode.Text;
+            thread = new Thread(() =>
             {
-                case "Компьютер":
-                    ComputerInformationController computerContoller = new ComputerInformationController();
-                    AddBlock(computerContoller.GetGeneralInformation());
-                    break;
-                case "Операционная система":
-                    OperatingSystemController controller = new OperatingSystemController();
-                    AddBlock(controller.GetOperatingSystem());
-                    AddBlock(controller.GetUserInformation());
-                    break;
-                case "Материнская плата":
-                    MotherboardInformationConstoller motherboardController = new MotherboardInformationConstoller();
-                    AddBlock(motherboardController.GetMotherboardProperties());
-                    AddBlock(motherboardController.GetManufacturerInformation());
-                    break;
-                case "ЦП":
-                    CPUInformationController cpuInformationController = new CPUInformationController();
-                    new Thread(() =>
-                    {
-                        InformationBlock block = cpuInformationController.GetCPUProperties();
-                        listView.Invoke(new Action(() => { AddBlock(block); }));
-                        block = cpuInformationController.GetManufacturerInformation();
-                        listView.Invoke(new Action(() => { AddBlock(block); }));
-                        block = cpuInformationController.GetMultiCPU();
-                        listView.Invoke(new Action(() => { AddBlock(block); }));
-                    }).Start();
-                    break;
-                case "Дисплей":
-                    DisplayInformationController displayController = new DisplayInformationController();
-                    AddBlock(displayController.GetDisplayProperties());
-                    break;
-            }
+                switch (text)
+                {
+                    case "Компьютер":
+                        ComputerInformationController computerContoller = new ComputerInformationController();
+                        AddBlock(computerContoller.GetGeneralInformation());
+                        break;
+                    case "Операционная система":
+                        OperatingSystemController controller = new OperatingSystemController();
+                        AddBlock(controller.GetOperatingSystem());
+                        AddBlock(controller.GetUserInformation());
+                        break;
+                    case "Материнская плата":
+                        MotherboardInformationConstoller motherboardController = new MotherboardInformationConstoller();
+                        AddBlock(motherboardController.GetMotherboardProperties());
+                        AddBlock(motherboardController.GetManufacturerInformation());
+                        break;
+                    case "ЦП":
+                        CPUInformationController cpuInformationController = new CPUInformationController();
+                        AddBlock(cpuInformationController.GetCPUProperties());
+                        AddBlock(cpuInformationController.GetCharacteristics());
+                        AddBlock(cpuInformationController.GetMultiCPU());
+                        AddBlock(cpuInformationController.GetSystemInformation());
+                        AddBlock(cpuInformationController.GetCurrentInformation());
+                        AddBlock(cpuInformationController.GetManufacturerInformation());
+                        break;
+                    case "Дисплей":
+                        DisplayInformationController displayController = new DisplayInformationController();
+                        AddBlock(displayController.GetDisplayProperties());
+                        break;
+                    case "Video":
+                        VIdeoInformationController vIdeoInformationController = new VIdeoInformationController();
+                        AddBlock(vIdeoInformationController.GetBasicInformation());
+                        AddBlock(vIdeoInformationController.GetCharacteristics());
+                        AddBlock(vIdeoInformationController.GetCurrentInformation());
+                        AddBlock(vIdeoInformationController.GetSystemInformation());
+                        break;
+                }
+            });
+            thread.Start();
         }
     }
 }
