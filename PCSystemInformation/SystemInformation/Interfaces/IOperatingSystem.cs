@@ -17,7 +17,8 @@ namespace PCSystemInformation.SystemInformation
         String GetBaseDir();
         String GetUserName();
         String GetProductID();
-        String GetProductKey();
+        String GetPlatform();
+        String GetVersionString();
         String GetServicePack();
     }
 }

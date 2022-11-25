@@ -27,6 +27,8 @@ namespace PCSystemInformation.Controllers
             block.elements.Add(new Element("Пакет обновления ОС", operatingSystem.GetServicePack()));
             block.elements.Add(new Element("Дата установки ОС", operatingSystem.GetDate()));
             block.elements.Add(new Element("Основная папка ОС", operatingSystem.GetBaseDir()));
+            block.elements.Add(new Element("Платформа", operatingSystem.GetPlatform()));
+            block.elements.Add(new Element("Версия", operatingSystem.GetVersionString()));
             return block;
         }
         public InformationBlock GetUserInformation()
@@ -34,7 +36,6 @@ namespace PCSystemInformation.Controllers
             InformationBlock block = new InformationBlock("Лицензионная инфформация");
             block.elements.Add(new Element("Зарегистрированный пользователь", operatingSystem.GetUserName()));
             block.elements.Add(new Element("ID продукта", operatingSystem.GetProductID()));
-           // block.elements.Add(new Element("Ключ продукта", operatingSystem.GetProductKey()));
             return block;
         }
     }

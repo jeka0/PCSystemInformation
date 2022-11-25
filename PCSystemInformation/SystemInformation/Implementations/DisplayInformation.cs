@@ -46,6 +46,40 @@ namespace PCSystemInformation.SystemInformation
         {
             return GetInformation("PixelsPerYLogicalInch", searcher);
         }
+
+        public String GetCaption()
+        {
+            return GetInformation("Caption", searcher);
+        }
+        public String GetConfigManagerUserConfig()
+        {
+            return GetInformation("ConfigManagerUserConfig", searcher);
+        }
+        public String GetCreationClassName()
+        {
+            return GetInformation("CreationClassName", searcher);
+        }
+        public String GetDescription()
+        {
+            return GetInformation("Description", searcher);
+        }
+        public String GetDeviceID()
+        {
+            return GetInformation("DeviceID", searcher);
+        }
+        public String GetMonitorType()
+        {
+            return GetInformation("MonitorType", searcher);
+        }
+        public String GetSystemCreationClassName()
+        {
+            return GetInformation("SystemCreationClassName", searcher);
+        }
+        public String GetSystemName()
+        {
+            return GetInformation("SystemName", searcher);
+        }
+
         private String GetInformation(String str, ManagementObjectSearcher searcher)
         {
             try

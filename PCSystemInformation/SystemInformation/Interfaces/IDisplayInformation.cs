@@ -15,5 +15,13 @@ namespace PCSystemInformation.SystemInformation
         String GetStatus();
         String GetPixelsPerXLogicalInch();
         String GetPixelsPerYLogicalInch();
+        String GetCaption();
+        String GetConfigManagerUserConfig();
+        String GetCreationClassName();
+        String GetDescription();
+        String GetDeviceID();
+        String GetMonitorType();
+        String GetSystemCreationClassName();
+        String GetSystemName();
     }
 }

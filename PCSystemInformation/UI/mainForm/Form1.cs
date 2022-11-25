@@ -8,42 +8,33 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
 using System.Windows.Forms;
-using PCSystemInformation.Controllers;
-using PCSystemInformation.Models;
+using PCSystemInformation.UI;
+using PCSystemInformation.UI.OSD;
 
 namespace PCSystemInformation
 {
     public partial class Form1 : Form
     {
         private Thread thread;
+        private UIController controller;
+        public OSDForm osd;
+
         public Form1()
         {
             InitializeComponent();
         }
         private void Form1_Load(object sender, EventArgs e)
         {
+            controller = new UIController(listView);
             treeView.Nodes.Add("Компьютер");
             treeView.Nodes.Add("Операционная система");
             treeView.Nodes.Add("Материнская плата");
             treeView.Nodes.Add("ЦП");
             treeView.Nodes.Add("Дисплей");
             treeView.Nodes.Add("Video");
+            treeView.Nodes.Add("Диски");
         }
 
-        private void AddBlock(InformationBlock block)
-        {
-            listView.Invoke(new Action(() =>
-            {
-                listView.Items.Add(block.Name);
-                foreach (Element element in block.elements)
-                {
-                    ListViewItem item = new ListViewItem(element.Name);
-                    foreach (String part in element.parts) item.SubItems.Add(part);
-                    listView.Items.Add(item);
-                }
-                listView.Items.Add("");
-            }));
-        }
         private void treeView1_MouseClick(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Right)
@@ -58,47 +49,17 @@ namespace PCSystemInformation
             if (thread != null) { thread.Abort(); thread = null; }
             listView.Items.Clear();
             String text = treeView.SelectedNode.Text;
-            thread = new Thread(() =>
-            {
-                switch (text)
-                {
-                    case "Компьютер":
-                        ComputerInformationController computerContoller = new ComputerInformationController();
-                        AddBlock(computerContoller.GetGeneralInformation());
-                        break;
-                    case "Операционная система":
-                        OperatingSystemController controller = new OperatingSystemController();
-                        AddBlock(controller.GetOperatingSystem());
-                        AddBlock(controller.GetUserInformation());
-                        break;
-                    case "Материнская плата":
-                        MotherboardInformationConstoller motherboardController = new MotherboardInformationConstoller();
-                        AddBlock(motherboardController.GetMotherboardProperties());
-                        AddBlock(motherboardController.GetManufacturerInformation());
-                        break;
-                    case "ЦП":
-                        CPUInformationController cpuInformationController = new CPUInformationController();
-                        AddBlock(cpuInformationController.GetCPUProperties());
-                        AddBlock(cpuInformationController.GetCharacteristics());
-                        AddBlock(cpuInformationController.GetMultiCPU());
-                        AddBlock(cpuInformationController.GetSystemInformation());
-                        AddBlock(cpuInformationController.GetCurrentInformation());
-                        AddBlock(cpuInformationController.GetManufacturerInformation());
-                        break;
-                    case "Дисплей":
-                        DisplayInformationController displayController = new DisplayInformationController();
-                        AddBlock(displayController.GetDisplayProperties());
-                        break;
-                    case "Video":
-                        VIdeoInformationController vIdeoInformationController = new VIdeoInformationController();
-                        AddBlock(vIdeoInformationController.GetBasicInformation());
-                        AddBlock(vIdeoInformationController.GetCharacteristics());
-                        AddBlock(vIdeoInformationController.GetCurrentInformation());
-                        AddBlock(vIdeoInformationController.GetSystemInformation());
-                        break;
-                }
-            });
+            thread = new Thread(() => controller.Navigate(text));
             thread.Start();
+        }
+
+        private void OSDToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (osd == null)
+            {
+                osd = new OSDForm();
+                osd.Show();
+            }
         }
     }
 }

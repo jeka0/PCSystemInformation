@@ -68,15 +68,23 @@ namespace PCSystemInformation.SystemInformation
         {
             return registry.HKLM_GetString(CURRENT_VERSION, "ProductId");
         }
-        public String GetProductKey()
+
+        public String GetPlatform()
         {
-            return null; 
+            return Environment.OSVersion.Platform.ToString();
         }
+
+        public String GetVersionString()
+        {
+            return Environment.OSVersion.VersionString;
+        }
+
         public String GetServicePack()
         {
             String value = Environment.OSVersion.ServicePack;
             if (value == null || value == "") return "-";
             return value;
         }
+
     }
 }
