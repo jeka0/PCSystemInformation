@@ -71,6 +71,7 @@ namespace PCSystemInformation
             this.listView.TabIndex = 1;
             this.listView.UseCompatibleStateImageBehavior = false;
             this.listView.View = System.Windows.Forms.View.Details;
+            this.listView.SelectedIndexChanged += new System.EventHandler(this.listView_SelectedIndexChanged);
             // 
             // column1
             // 
@@ -92,7 +93,7 @@ namespace PCSystemInformation
             // открытьOSDПанельToolStripMenuItem
             // 
             this.открытьOSDПанельToolStripMenuItem.Name = "открытьOSDПанельToolStripMenuItem";
-            this.открытьOSDПанельToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.открытьOSDПанельToolStripMenuItem.Size = new System.Drawing.Size(97, 22);
             this.открытьOSDПанельToolStripMenuItem.Text = "OSD";
             this.открытьOSDПанельToolStripMenuItem.Click += new System.EventHandler(this.OSDToolStripMenuItem_Click);
             // 

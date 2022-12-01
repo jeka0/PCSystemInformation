@@ -10,6 +10,7 @@ using System.Threading;
 using System.Windows.Forms;
 using PCSystemInformation.UI;
 using PCSystemInformation.UI.OSD;
+using PCSystemInformation.UI.ThreadsForm;
 
 namespace PCSystemInformation
 {
@@ -33,6 +34,7 @@ namespace PCSystemInformation
             treeView.Nodes.Add("Дисплей");
             treeView.Nodes.Add("Video");
             treeView.Nodes.Add("Диски");
+            treeView.Nodes.Add("Процессы");
         }
 
         private void treeView1_MouseClick(object sender, MouseEventArgs e)
@@ -59,6 +61,23 @@ namespace PCSystemInformation
             {
                 osd = new OSDForm();
                 osd.Show();
+            }
+        }
+
+        private void listView_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(treeView.SelectedNode.Text== "Процессы")
+            {
+                foreach(ListViewItem item in listView.SelectedItems)
+                {
+                    String id = item.SubItems[0].Text;
+                    if (id == "") return;
+                    var list = controller.processesController.GetThreads(id);
+                    if (list == null) return;
+                    ThreadsForm threadsForm = new ThreadsForm(list);
+                    threadsForm.ShowDialog();
+                    break;
+                }
             }
         }
     }

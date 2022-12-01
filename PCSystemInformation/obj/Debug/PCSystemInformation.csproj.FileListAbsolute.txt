@@ -19,3 +19,4 @@ D:\Visual studio\PCSystemInformation\PCSystemInformation\obj\Debug\PCSystemInfor
 D:\Visual studio\PCSystemInformation\PCSystemInformation\obj\Debug\PCSystemInformation.exe
 D:\Visual studio\PCSystemInformation\PCSystemInformation\obj\Debug\PCSystemInformation.pdb
 D:\Visual studio\PCSystemInformation\PCSystemInformation\obj\Debug\PCSystemInformation.UI.OSD.OSDForm.resources
+D:\Visual studio\PCSystemInformation\PCSystemInformation\obj\Debug\PCSystemInformation.UI.ThreadsForm.ThreadsForm.resources

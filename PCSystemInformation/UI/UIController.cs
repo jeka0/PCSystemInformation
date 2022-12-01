@@ -12,6 +12,7 @@ namespace PCSystemInformation.UI
     public class UIController
     {
         private ListView listView;
+        public ProcessesController processesController { get; private set; }
 
         public UIController(ListView listView)
         {
@@ -23,27 +24,68 @@ namespace PCSystemInformation.UI
             switch (text)
             {
                 case "Компьютер":
+                    InitPage();
                     ComputerPage();
                     break;
                 case "Операционная система":
+                    InitPage();
                     OSPage();
                     break;
                 case "Материнская плата":
+                    InitPage();
                     MotherboardPage();
                     break;
                 case "ЦП":
+                    InitPage();
                     CPUPage();
                     break;
                 case "Дисплей":
+                    InitPage();
                     DisplayPage();
                     break;
                 case "Video":
+                    InitPage();
                     VideoPage();
                     break;
                 case "Диски":
+                    InitPage();
                     DrivePage();
                     break;
+                case "Процессы":
+                    InitProcesses();
+                    Processes();
+                    break;
             }
+        }
+
+        private void InitPage()
+        {
+            listView.Invoke(new Action(() =>
+            {
+                this.listView.Columns.Clear();
+                this.listView.Columns.Add("Поле", 200);
+                this.listView.Columns.Add("Значение", 500);
+            }));
+        }
+
+        private void InitProcesses()
+        {
+            listView.Invoke(new Action(() =>
+            {
+                this.listView.Columns.Clear();
+                this.listView.Columns.Add("Id", 50);
+                this.listView.Columns.Add("Название процесса", 120);
+                this.listView.Columns.Add("Занимаемая память", 120);
+                this.listView.Columns.Add("Приоритет", 80);
+                this.listView.Columns.Add("Имя пользователя", 120);
+                this.listView.Columns.Add("Количество потоков", 120);
+            }));
+        }
+
+        private void Processes()
+        {
+            processesController = new ProcessesController();
+            AddBlock(processesController.GetProcesses());
         }
 
         private void ComputerPage()

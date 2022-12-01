@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
 using System.Windows.Forms;
+using PCSystemInformation.Models;
 using System.Diagnostics;
 
 namespace PCSystemInformation.UI.OSD
@@ -15,9 +16,10 @@ namespace PCSystemInformation.UI.OSD
     public partial class OSDForm : Form
     {
         private Point point;
-        private PerformanceCounter cpucounter;
-        private PerformanceCounter memcounter;
-        //private PerformanceCounter gpucounter;
+        private CPUUsage cpuUsage;
+        private MemoryUsage memoryUsage;
+        private GPUUsage gpuUsage;
+        private Thread thread;
 
         public OSDForm()
         {
@@ -26,10 +28,8 @@ namespace PCSystemInformation.UI.OSD
 
         private void OSDForm_Load(object sender, EventArgs e)
         {
-            cpucounter = new PerformanceCounter("Processor Information", "% Processor Time", "_Total");
-            memcounter = new PerformanceCounter("Memory", "Available MBytes", true);
-            //gpucounter = new PerformanceCounter("GPU", "% GPU Usage", true);
-            timer1.Start();
+            thread = new Thread(ThreadTask);
+            thread.Start();
         }
 
         private void OSDForm_MouseMove(object sender, MouseEventArgs e)
@@ -51,11 +51,34 @@ namespace PCSystemInformation.UI.OSD
             this.Close();
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
+        private async void ThreadTask()
         {
-            label1.Text = String.Format("CPU: {0:#.#} %", cpucounter.NextValue());
-            label2.Text = String.Format("Mem: {0} Мб", memcounter.NextValue());
-            //label3.Text = String.Format("GPU: {0} Мб", gpucounter.NextValue());
+            try
+            {
+                cpuUsage = new CPUUsage();
+                memoryUsage = new MemoryUsage();
+                gpuUsage = new GPUUsage();
+                while (true)
+                {
+                    double value = Math.Round(await gpuUsage.getValue());
+                    label3.Invoke(new Action(() => Tick((int)value)));
+                    Thread.Sleep(1000);
+                }
+            }
+            catch(Exception e) { Console.WriteLine(e.Message); }
+        }
+
+        private void Tick(int value)
+        {
+            label1.Text = String.Format("{0} %", (int)Math.Round(cpuUsage.getValue()));
+            label2.Text = String.Format("{0} Мб", memoryUsage.getValue());
+            label3.Text = String.Format("{0} %", value);
+
+        }
+
+        private void OSDForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (thread != null) thread.Abort();
         }
     }
 }
