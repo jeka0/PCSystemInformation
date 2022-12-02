@@ -72,7 +72,6 @@ namespace PCSystemInformation.Controllers
             InformationBlock block = new InformationBlock("Текущая информация");
             block.elements.Add(new Element("Текущая тактовая частота", cpuInformation.GetCurrentClockSpeed()));
             block.elements.Add(new Element("Текущее напряжение", cpuInformation.GetCurrentVoltage()));
-            block.elements.Add(new Element("Процент нагрузки", cpuInformation.GetLoadPercentage() + " %"));
             return block;
         }
 

@@ -36,6 +36,8 @@ namespace PCSystemInformation
             this.column2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.открытьOSDПанельToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.button1 = new System.Windows.Forms.Button();
+            this.панельДатчиковToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -47,7 +49,7 @@ namespace PCSystemInformation
             this.treeView.Margin = new System.Windows.Forms.Padding(2);
             this.treeView.MinimumSize = new System.Drawing.Size(86, 294);
             this.treeView.Name = "treeView";
-            this.treeView.Size = new System.Drawing.Size(193, 465);
+            this.treeView.Size = new System.Drawing.Size(193, 418);
             this.treeView.TabIndex = 0;
             this.treeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView_AfterSelect);
             this.treeView.MouseClick += new System.Windows.Forms.MouseEventHandler(this.treeView1_MouseClick);
@@ -86,9 +88,10 @@ namespace PCSystemInformation
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.открытьOSDПанельToolStripMenuItem});
+            this.открытьOSDПанельToolStripMenuItem,
+            this.панельДатчиковToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(98, 26);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(169, 48);
             // 
             // открытьOSDПанельToolStripMenuItem
             // 
@@ -97,16 +100,36 @@ namespace PCSystemInformation
             this.открытьOSDПанельToolStripMenuItem.Text = "OSD";
             this.открытьOSDПанельToolStripMenuItem.Click += new System.EventHandler(this.OSDToolStripMenuItem_Click);
             // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button1.Location = new System.Drawing.Point(96, 423);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(95, 28);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "Обновить";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // панельДатчиковToolStripMenuItem
+            // 
+            this.панельДатчиковToolStripMenuItem.Name = "панельДатчиковToolStripMenuItem";
+            this.панельДатчиковToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.панельДатчиковToolStripMenuItem.Text = "Панель датчиков";
+            this.панельДатчиковToolStripMenuItem.Click += new System.EventHandler(this.SensorPanelToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(896, 463);
             this.ContextMenuStrip = this.contextMenuStrip1;
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.listView);
             this.Controls.Add(this.treeView);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.contextMenuStrip1.ResumeLayout(false);
@@ -122,6 +145,8 @@ namespace PCSystemInformation
         private System.Windows.Forms.ColumnHeader column2;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem открытьOSDПанельToolStripMenuItem;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ToolStripMenuItem панельДатчиковToolStripMenuItem;
     }
 }
 

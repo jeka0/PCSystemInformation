@@ -93,6 +93,9 @@ namespace PCSystemInformation.UI
             ComputerInformationController computerContoller = new ComputerInformationController();
             HardDrivesInformationController hardDrivesInformationController = new HardDrivesInformationController();
             AddBlock(computerContoller.GetGeneralInformation());
+            AddBlock(computerContoller.GetCPUInfo());
+            AddBlock(computerContoller.GetMotherboardInfo());
+            AddBlock(computerContoller.GetVideoInfo());
             AddBlock(hardDrivesInformationController.DiscNames());
         }
 
@@ -101,6 +104,7 @@ namespace PCSystemInformation.UI
             OperatingSystemController controller = new OperatingSystemController();
             AddBlock(controller.GetOperatingSystem());
             AddBlock(controller.GetUserInformation());
+            AddBlock(controller.GetSystemInfo());
         }
 
         private void MotherboardPage()

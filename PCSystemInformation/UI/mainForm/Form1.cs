@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using PCSystemInformation.UI;
 using PCSystemInformation.UI.OSD;
 using PCSystemInformation.UI.ThreadsForm;
+using PCSystemInformation.UI.SensorPanel;
 
 namespace PCSystemInformation
 {
@@ -19,6 +20,7 @@ namespace PCSystemInformation
         private Thread thread;
         private UIController controller;
         public OSDForm osd;
+        public SensorPanel sensorPanel;
 
         public Form1()
         {
@@ -59,7 +61,7 @@ namespace PCSystemInformation
         {
             if (osd == null)
             {
-                osd = new OSDForm();
+                osd = new OSDForm(this);
                 osd.Show();
             }
         }
@@ -78,6 +80,20 @@ namespace PCSystemInformation
                     threadsForm.ShowDialog();
                     break;
                 }
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            treeView_AfterSelect(sender, null);
+        }
+
+        private void SensorPanelToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (sensorPanel == null)
+            {
+                sensorPanel = new SensorPanel(this);
+                sensorPanel.Show();
             }
         }
     }

@@ -86,5 +86,54 @@ namespace PCSystemInformation.SystemInformation
             return value;
         }
 
+        public String GetBuildBranch()
+        {
+            return registry.HKLM_GetString(CURRENT_VERSION, "BuildBranch");
+        }
+
+        public String GetBuildLab()
+        {
+            return registry.HKLM_GetString(CURRENT_VERSION, "BuildLab");
+        }
+
+        public String GetBuildLabEx()
+        {
+            return registry.HKLM_GetString(CURRENT_VERSION, "BuildLabEx");
+        }
+
+        public String GetCompositionEditionID()
+        {
+            return registry.HKLM_GetString(CURRENT_VERSION, "CompositionEditionID");
+        }
+
+        public String GetCurrentBuildNumber()
+        {
+            return registry.HKLM_GetString(CURRENT_VERSION, "CurrentBuildNumber");
+        }
+
+        public String GetDisplayVersion()
+        {
+            return registry.HKLM_GetString(CURRENT_VERSION, "DisplayVersion");
+        }
+
+        public String GetEditionID()
+        {
+            return registry.HKLM_GetString(CURRENT_VERSION, "EditionID");
+        }
+
+        public String GetInstallationType()
+        {
+            return registry.HKLM_GetString(CURRENT_VERSION, "InstallationType");
+        }
+
+        public String GetProductId()
+        {
+            return registry.HKLM_GetString(CURRENT_VERSION, "ProductId");
+        }
+
+        public String GetReleaseId()
+        {
+            return registry.HKLM_GetString(CURRENT_VERSION, "ReleaseId");
+        }
     }
 }

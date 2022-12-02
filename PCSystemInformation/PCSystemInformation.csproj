@@ -36,6 +36,9 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="OpenHardwareMonitorLib, Version=0.8.0.2, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\OpenHardwareMonitorLibCore.1.0.2\lib\net452\OpenHardwareMonitorLib.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Management" />
@@ -59,6 +62,7 @@
     <Compile Include="Controllers\ProcessesController.cs" />
     <Compile Include="Controllers\VIdeoInformationController.cs" />
     <Compile Include="Models\MyThread.cs" />
+    <Compile Include="SystemInformation\Helpers\CpuTemperature.cs" />
     <Compile Include="SystemInformation\Helpers\CPUUsage.cs" />
     <Compile Include="Models\Element.cs" />
     <Compile Include="SystemInformation\Helpers\GPUUsage.cs" />
@@ -66,6 +70,7 @@
     <Compile Include="SystemInformation\Helpers\MemoryUsage.cs" />
     <Compile Include="Models\MyProcess.cs" />
     <Compile Include="SystemInformation\Helpers\Processes.cs" />
+    <Compile Include="Models\UpdateVisitor.cs" />
     <Compile Include="SystemInformation\Implementations\ComputerInformation.cs" />
     <Compile Include="SystemInformation\Implementations\CPUInformation.cs" />
     <Compile Include="SystemInformation\Implementations\DisplayInformation.cs" />
@@ -95,6 +100,12 @@
     <Compile Include="UI\OSD\OSDForm.Designer.cs">
       <DependentUpon>OSDForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\SensorPanel\SensorPanel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\SensorPanel\SensorPanel.Designer.cs">
+      <DependentUpon>SensorPanel.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\ThreadsForm\ThreadsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -117,10 +128,14 @@
     <EmbeddedResource Include="UI\OSD\OSDForm.resx">
       <DependentUpon>OSDForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\SensorPanel\SensorPanel.resx">
+      <DependentUpon>SensorPanel.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\ThreadsForm\ThreadsForm.resx">
       <DependentUpon>ThreadsForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.manifest" />
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

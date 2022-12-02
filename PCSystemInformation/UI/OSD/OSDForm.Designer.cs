@@ -61,7 +61,7 @@ namespace PCSystemInformation.UI.OSD
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label1.ForeColor = System.Drawing.Color.Yellow;
-            this.label1.Location = new System.Drawing.Point(151, 9);
+            this.label1.Location = new System.Drawing.Point(235, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(86, 25);
             this.label1.TabIndex = 1;
@@ -74,7 +74,7 @@ namespace PCSystemInformation.UI.OSD
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label2.ForeColor = System.Drawing.Color.Yellow;
-            this.label2.Location = new System.Drawing.Point(151, 55);
+            this.label2.Location = new System.Drawing.Point(236, 42);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(98, 25);
             this.label2.TabIndex = 2;
@@ -87,7 +87,7 @@ namespace PCSystemInformation.UI.OSD
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label3.ForeColor = System.Drawing.Color.Yellow;
-            this.label3.Location = new System.Drawing.Point(151, 99);
+            this.label3.Location = new System.Drawing.Point(235, 75);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(86, 25);
             this.label3.TabIndex = 3;
@@ -97,42 +97,42 @@ namespace PCSystemInformation.UI.OSD
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label4.ForeColor = System.Drawing.Color.Yellow;
-            this.label4.Location = new System.Drawing.Point(12, 99);
+            this.label4.Location = new System.Drawing.Point(13, 76);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(74, 25);
+            this.label4.Size = new System.Drawing.Size(159, 24);
             this.label4.TabIndex = 6;
-            this.label4.Text = "GPU: ";
+            this.label4.Text = "Загрузка GPU: ";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label5.ForeColor = System.Drawing.Color.Yellow;
-            this.label5.Location = new System.Drawing.Point(12, 55);
+            this.label5.Location = new System.Drawing.Point(13, 43);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(76, 25);
+            this.label5.Size = new System.Drawing.Size(220, 24);
             this.label5.TabIndex = 5;
-            this.label5.Text = "Mem: ";
+            this.label5.Text = "Свободная поамять: ";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label6.ForeColor = System.Drawing.Color.Yellow;
-            this.label6.Location = new System.Drawing.Point(13, 9);
+            this.label6.Location = new System.Drawing.Point(13, 10);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(73, 25);
+            this.label6.Size = new System.Drawing.Size(158, 24);
             this.label6.TabIndex = 4;
-            this.label6.Text = "CPU: ";
+            this.label6.Text = "Загрузка CPU: ";
             // 
             // OSDForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.MediumBlue;
-            this.ClientSize = new System.Drawing.Size(274, 514);
+            this.ClientSize = new System.Drawing.Size(345, 122);
             this.ContextMenuStrip = this.contextMenuStrip1;
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label5);
@@ -143,6 +143,7 @@ namespace PCSystemInformation.UI.OSD
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "OSDForm";
             this.Opacity = 0.9D;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "OSDForm";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.OSDForm_FormClosing);
             this.Load += new System.EventHandler(this.OSDForm_Load);

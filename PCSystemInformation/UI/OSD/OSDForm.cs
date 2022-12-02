@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 using System.Threading;
 using System.Windows.Forms;
 using PCSystemInformation.Models;
-using System.Diagnostics;
 
 namespace PCSystemInformation.UI.OSD
 {
@@ -20,10 +19,12 @@ namespace PCSystemInformation.UI.OSD
         private MemoryUsage memoryUsage;
         private GPUUsage gpuUsage;
         private Thread thread;
+        private Form1 form;
 
-        public OSDForm()
+        public OSDForm(Form1 form)
         {
             InitializeComponent();
+            this.form = form;
         }
 
         private void OSDForm_Load(object sender, EventArgs e)
@@ -61,7 +62,7 @@ namespace PCSystemInformation.UI.OSD
                 while (true)
                 {
                     double value = Math.Round(await gpuUsage.getValue());
-                    label3.Invoke(new Action(() => Tick((int)value)));
+                    this.Invoke(new Action(() => Tick((int)value)));
                     Thread.Sleep(1000);
                 }
             }
@@ -73,11 +74,11 @@ namespace PCSystemInformation.UI.OSD
             label1.Text = String.Format("{0} %", (int)Math.Round(cpuUsage.getValue()));
             label2.Text = String.Format("{0} Мб", memoryUsage.getValue());
             label3.Text = String.Format("{0} %", value);
-
         }
 
         private void OSDForm_FormClosing(object sender, FormClosingEventArgs e)
         {
+            this.form.osd = null;
             if (thread != null) thread.Abort();
         }
     }

@@ -29,7 +29,7 @@ namespace PCSystemInformation.SystemInformation
         public String HKLM_GetString(String path, String key)
         {
             object value = HKLM_GetValue(path, key);
-            if (value == null) return "";
+            if (value == null) return "-";
             return value.ToString();
         }
     }

@@ -12,7 +12,7 @@ namespace PCSystemInformation.SystemInformation
         private const String ROOT = "root\\CIMV2";
         private const String Device = "SELECT * FROM Win32_Processor";
         private RegistryAccess registry;
-        private ManagementObject querObj;
+        private static ManagementObject querObj;
         private ManagementObjectSearcher cpu;
         private String core;
         private String name;
@@ -20,7 +20,7 @@ namespace PCSystemInformation.SystemInformation
         {
             this.registry = new RegistryAccess();
             this.cpu = new ManagementObjectSearcher(ROOT, Device);
-            foreach (ManagementObject querObj in cpu.Get()) { this.querObj = querObj; break; }
+            if(CPUInformation.querObj == null) foreach (ManagementObject querObj in cpu.Get()) { CPUInformation.querObj = querObj; break; }
         }
         public String GetName()
         {

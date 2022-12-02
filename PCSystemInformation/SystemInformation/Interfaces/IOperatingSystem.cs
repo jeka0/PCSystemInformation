@@ -20,5 +20,15 @@ namespace PCSystemInformation.SystemInformation
         String GetPlatform();
         String GetVersionString();
         String GetServicePack();
+        String GetBuildBranch();
+        String GetBuildLab();
+        String GetBuildLabEx();
+        String GetCompositionEditionID();
+        String GetCurrentBuildNumber();
+        String GetDisplayVersion();
+        String GetEditionID();
+        String GetInstallationType();
+        String GetProductId();
+        String GetReleaseId();
     }
 }
