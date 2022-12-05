@@ -53,7 +53,7 @@ namespace PCSystemInformation.SystemInformation
 
         public String GetCurrentNumberOfRows() { return GetStringInformation("CurrentNumberOfRows", searcher); }
 
-        public String GetCurrentRefreshRate() { return GetStringInformation("CurrentRefreshRate", searcher) + " Гц"; }
+        public String GetCurrentRefreshRate() { return GetStringInformation("CurrentRefreshRate", searcher); }
 
         public String GetCurrentScanMode() { return GetStringInformation("CurrentScanMode", searcher); }
 
@@ -79,9 +79,9 @@ namespace PCSystemInformation.SystemInformation
 
         public String GetInstalledDisplayDrivers() { return GetStringInformation("InstalledDisplayDrivers", searcher); }
 
-        public String GetMaxRefreshRate() { return GetStringInformation("MaxRefreshRate", searcher) + " Гц"; }
+        public String GetMaxRefreshRate() { return GetStringInformation("MaxRefreshRate", searcher); }
 
-        public String GetMinRefreshRate() { return GetStringInformation("MinRefreshRate", searcher)+ " Гц"; }
+        public String GetMinRefreshRate() { return GetStringInformation("MinRefreshRate", searcher); }
 
         public String GetMonochrome() { return GetStringInformation("Monochrome", searcher); }
 

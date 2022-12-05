@@ -46,16 +46,17 @@ namespace PCSystemInformation.UI.SensorPanel
                 label.AutoSize = true;
                 label.Location = new Point(20, previous);
                 Label label2 = new Label();
-                label2.Text = String.Format("{0} °C", item.Value);
+                label2.Text = String.Format("{0:#.#} °C", item.Value);
                 label2.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Bold, GraphicsUnit.Point, ((byte)(204)));
                 label2.ForeColor = Color.White;
                 label2.AutoSize = true;
-                label2.Location = new Point(label.Size.Width + 60, previous);
+                label2.Location = new Point(label.Size.Width + 100, previous);
                 previous += 30;
                 ProgressBar progressBar = new ProgressBar();
-                progressBar.Size = new Size(200, 18);
-                progressBar.Value = (int)item.Value;
-                progressBar.Maximum = 100;
+                progressBar.Size = new Size(250, 18);
+                if ((int)item.Value < 150) progressBar.Value = (int)item.Value;
+                else progressBar.Value = 150;
+                progressBar.Maximum = 151;
                 progressBar.Location = new Point(20, previous);
                 previous += 30;
                 temps.Add(item.Key, new Temp(label2, progressBar));
@@ -88,13 +89,9 @@ namespace PCSystemInformation.UI.SensorPanel
             {
                 if(temps.TryGetValue(item.Key, out Temp temp))
                 {
-                    Color color;
-                    if (item.Value <= 45) color = Color.White; 
-                    else if(item.Value <= 75) color = Color.Yellow; 
-                    else color = Color.Red;
-                    temp.label.Text = String.Format("{0} °C", item.Value);
-                    temp.label.ForeColor = color;
-                    temp.progressBar.Value = (int)item.Value;
+                    temp.label.Text = String.Format("{0:#.#} °C", item.Value);
+                    if ((int)item.Value < 150) temp.progressBar.Value = (int)item.Value;
+                    else temp.progressBar.Value = 150;
                 }
             }
         }

@@ -44,6 +44,7 @@ namespace PCSystemInformation.Controllers
             block.elements.Add(new Element("Описание", videoInformation.GetDescription()));
             block.elements.Add(new Element("Monochrome", videoInformation.GetMonochrome()));
             block.elements.Add(new Element("Видеопроцессор", videoInformation.GetVideoProcessor()));
+            block.elements.Add(new Element("Статус", videoInformation.GetStatus()));
             return block;
         }
         public InformationBlock GetCurrentInformation()

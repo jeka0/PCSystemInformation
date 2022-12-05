@@ -145,7 +145,6 @@ namespace PCSystemInformation.UI
             VIdeoInformationController vIdeoInformationController = new VIdeoInformationController();
             AddBlock(vIdeoInformationController.GetBasicInformation());
             AddBlock(vIdeoInformationController.GetCharacteristics());
-            AddBlock(vIdeoInformationController.GetCurrentInformation());
             AddBlock(vIdeoInformationController.GetSystemInformation());
         }
 

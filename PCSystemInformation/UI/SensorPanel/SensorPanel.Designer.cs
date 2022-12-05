@@ -37,26 +37,28 @@ namespace PCSystemInformation.UI.SensorPanel
             // 
             // contextMenuStrip1
             // 
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.закрытьToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(121, 26);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(136, 28);
             // 
             // закрытьToolStripMenuItem
             // 
             this.закрытьToolStripMenuItem.Name = "закрытьToolStripMenuItem";
-            this.закрытьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.закрытьToolStripMenuItem.Size = new System.Drawing.Size(135, 24);
             this.закрытьToolStripMenuItem.Text = "Закрыть";
             this.закрытьToolStripMenuItem.Click += new System.EventHandler(this.CloseToolStripMenuItem_Click);
             // 
             // SensorPanel
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.ClientSize = new System.Drawing.Size(262, 450);
+            this.ClientSize = new System.Drawing.Size(349, 177);
             this.ContextMenuStrip = this.contextMenuStrip1;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "SensorPanel";
             this.Opacity = 0.9D;
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
