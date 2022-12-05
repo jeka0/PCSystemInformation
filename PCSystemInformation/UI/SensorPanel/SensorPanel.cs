@@ -61,6 +61,7 @@ namespace PCSystemInformation.UI.SensorPanel
                 previous += 30;
                 temps.Add(item.Key, new Temp(label2, progressBar));
                 this.Invoke(new Action(()=> {
+                    this.Height = previous;
                     this.Controls.Add(label);
                     this.Controls.Add(label2);
                     this.Controls.Add(progressBar);
