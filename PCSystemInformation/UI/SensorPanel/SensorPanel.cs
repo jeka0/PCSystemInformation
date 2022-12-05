@@ -54,9 +54,9 @@ namespace PCSystemInformation.UI.SensorPanel
                 previous += 30;
                 ProgressBar progressBar = new ProgressBar();
                 progressBar.Size = new Size(220, 18);
-                if ((int)item.Value < 150) progressBar.Value = (int)item.Value;
-                else progressBar.Value = 150;
-                progressBar.Maximum = 151;
+                if ((int)item.Value < 120) progressBar.Value = (int)item.Value;
+                else progressBar.Value = 120;
+                progressBar.Maximum = 121;
                 progressBar.Location = new Point(20, previous);
                 previous += 30;
                 temps.Add(item.Key, new Temp(label2, progressBar));
@@ -91,8 +91,8 @@ namespace PCSystemInformation.UI.SensorPanel
                 if(temps.TryGetValue(item.Key, out Temp temp))
                 {
                     temp.label.Text = String.Format("{0:#.#} °C", item.Value);
-                    if ((int)item.Value < 150) temp.progressBar.Value = (int)item.Value;
-                    else temp.progressBar.Value = 150;
+                    if ((int)item.Value < 120) temp.progressBar.Value = (int)item.Value;
+                    else temp.progressBar.Value = 120;
                 }
             }
         }
