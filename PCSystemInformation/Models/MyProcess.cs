@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace PCSystemInformation.Models
 {
@@ -14,7 +15,8 @@ namespace PCSystemInformation.Models
         public int Priority { get; set; }
         public String Owner { get; set; }
         public int threadsCount { get; set; }
-        public MyProcess(int Id, String ProcessName, String Memory, int Priority, String Owner, int threadsCount)
+        public Process process { get; set; }
+        public MyProcess(int Id, String ProcessName, String Memory, int Priority, String Owner, int threadsCount, Process process)
         {
             this.Id = Id;
             this.ProcessName = ProcessName;
@@ -22,6 +24,7 @@ namespace PCSystemInformation.Models
             this.Priority = Priority;
             this.Owner = Owner;
             this.threadsCount = threadsCount;
+            this.process = process;
         }
     }
 }

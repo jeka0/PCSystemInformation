@@ -21,6 +21,7 @@ namespace PCSystemInformation
         private UIController controller;
         public OSDForm osd;
         public SensorPanel sensorPanel;
+        public Tests tests;
 
         public Form1()
         {
@@ -28,7 +29,7 @@ namespace PCSystemInformation
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-            controller = new UIController(listView);
+            controller = new UIController(listView, contextMenuStrip2);
             treeView.Nodes.Add("Компьютер");
             treeView.Nodes.Add("Операционная система");
             treeView.Nodes.Add("Материнская плата");
@@ -66,23 +67,6 @@ namespace PCSystemInformation
             }
         }
 
-        private void listView_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if(treeView.SelectedNode.Text== "Процессы")
-            {
-                foreach(ListViewItem item in listView.SelectedItems)
-                {
-                    String id = item.SubItems[0].Text;
-                    if (id == "") return;
-                    var list = controller.processesController.GetThreads(id);
-                    if (list == null) return;
-                    ThreadsForm threadsForm = new ThreadsForm(list);
-                    threadsForm.ShowDialog();
-                    break;
-                }
-            }
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
             treeView_AfterSelect(sender, null);
@@ -96,5 +80,47 @@ namespace PCSystemInformation
                 sensorPanel.Show();
             }
         }
+
+        private void OpenThreadToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (listView.SelectedItems != null)
+            {
+                foreach (ListViewItem item in listView.SelectedItems)
+                {
+                    String id = item.SubItems[0].Text;
+                    if (id == "") return;
+                    var list = controller.processesController.GetThreads(id);
+                    if (list == null) return;
+                    ThreadsForm threadsForm = new ThreadsForm(list);
+                    threadsForm.ShowDialog();
+                    break;
+                }
+            }
+        }
+
+        private void KillToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (listView.SelectedItems != null)
+            {
+                foreach (ListViewItem item in listView.SelectedItems)
+                {
+                    String id = item.SubItems[0].Text;
+                    if (id == "") return;
+                    controller.processesController.KillProcess(id);
+                    treeView_AfterSelect(sender, null);
+                    break;
+                }
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if(tests == null)
+            {
+                tests = new Tests(this);
+                tests.Show();
+            }
+        }
+
     }
 }

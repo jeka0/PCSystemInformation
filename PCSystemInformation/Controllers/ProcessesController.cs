@@ -44,6 +44,13 @@ namespace PCSystemInformation.Controllers
             }
             else return null;
         }
+
+        public void KillProcess(String id)
+        {
+            List<MyProcess> list = processes.MyProcesses;
+            MyProcess process = list.Find((a) => a.Id.ToString() == id);
+            process.process.Kill();
+        }
     }
 
 }

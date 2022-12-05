@@ -23,3 +23,4 @@ D:\Visual studio\PCSystemInformation\PCSystemInformation\obj\Debug\PCSystemInfor
 D:\Visual studio\PCSystemInformation\PCSystemInformation\bin\Debug\OpenHardwareMonitorLib.dll
 D:\Visual studio\PCSystemInformation\PCSystemInformation\obj\Debug\PCSystemInformation.csproj.CopyComplete
 D:\Visual studio\PCSystemInformation\PCSystemInformation\obj\Debug\PCSystemInformation.UI.SensorPanel.SensorPanel.resources
+D:\Visual studio\PCSystemInformation\PCSystemInformation\obj\Debug\PCSystemInformation.UI.Tests.resources

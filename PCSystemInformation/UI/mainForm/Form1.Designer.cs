@@ -38,7 +38,12 @@ namespace PCSystemInformation
             this.открытьOSDПанельToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.панельДатчиковToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.button1 = new System.Windows.Forms.Button();
+            this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.qedddToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.снятьЗадачуToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.button2 = new System.Windows.Forms.Button();
             this.contextMenuStrip1.SuspendLayout();
+            this.contextMenuStrip2.SuspendLayout();
             this.SuspendLayout();
             // 
             // treeView
@@ -73,7 +78,6 @@ namespace PCSystemInformation
             this.listView.TabIndex = 1;
             this.listView.UseCompatibleStateImageBehavior = false;
             this.listView.View = System.Windows.Forms.View.Details;
-            this.listView.SelectedIndexChanged += new System.EventHandler(this.listView_SelectedIndexChanged);
             // 
             // column1
             // 
@@ -111,7 +115,7 @@ namespace PCSystemInformation
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.Location = new System.Drawing.Point(49, 423);
+            this.button1.Location = new System.Drawing.Point(12, 423);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(95, 28);
             this.button1.TabIndex = 2;
@@ -119,21 +123,57 @@ namespace PCSystemInformation
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // contextMenuStrip2
+            // 
+            this.contextMenuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.qedddToolStripMenuItem,
+            this.снятьЗадачуToolStripMenuItem});
+            this.contextMenuStrip2.Name = "contextMenuStrip2";
+            this.contextMenuStrip2.Size = new System.Drawing.Size(164, 48);
+            // 
+            // qedddToolStripMenuItem
+            // 
+            this.qedddToolStripMenuItem.Name = "qedddToolStripMenuItem";
+            this.qedddToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.qedddToolStripMenuItem.Text = "Открыть потоки";
+            this.qedddToolStripMenuItem.Click += new System.EventHandler(this.OpenThreadToolStripMenuItem_Click);
+            // 
+            // снятьЗадачуToolStripMenuItem
+            // 
+            this.снятьЗадачуToolStripMenuItem.Name = "снятьЗадачуToolStripMenuItem";
+            this.снятьЗадачуToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.снятьЗадачуToolStripMenuItem.Text = "Снять задачу";
+            this.снятьЗадачуToolStripMenuItem.Click += new System.EventHandler(this.KillToolStripMenuItem_Click);
+            // 
+            // button2
+            // 
+            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button2.Location = new System.Drawing.Point(111, 423);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(80, 28);
+            this.button2.TabIndex = 3;
+            this.button2.Text = "Тест";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(896, 463);
             this.ContextMenuStrip = this.contextMenuStrip1;
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.listView);
             this.Controls.Add(this.treeView);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
+            this.Text = "Сбор системной информации";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.contextMenuStrip1.ResumeLayout(false);
+            this.contextMenuStrip2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -148,6 +188,10 @@ namespace PCSystemInformation
         private System.Windows.Forms.ToolStripMenuItem открытьOSDПанельToolStripMenuItem;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ToolStripMenuItem панельДатчиковToolStripMenuItem;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip2;
+        private System.Windows.Forms.ToolStripMenuItem qedddToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem снятьЗадачуToolStripMenuItem;
+        private System.Windows.Forms.Button button2;
     }
 }
 

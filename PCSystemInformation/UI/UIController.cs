@@ -12,11 +12,13 @@ namespace PCSystemInformation.UI
     public class UIController
     {
         private ListView listView;
+        private ContextMenuStrip ContextMenu;
         public ProcessesController processesController { get; private set; }
 
-        public UIController(ListView listView)
+        public UIController(ListView listView, ContextMenuStrip ContextMenu)
         {
             this.listView = listView;
+            this.ContextMenu = ContextMenu;
         }
 
         public void Navigate(String text)
@@ -65,6 +67,7 @@ namespace PCSystemInformation.UI
                 this.listView.Columns.Clear();
                 this.listView.Columns.Add("Поле", 200);
                 this.listView.Columns.Add("Значение", 500);
+                this.listView.ContextMenuStrip = null;
             }));
         }
 
@@ -79,6 +82,7 @@ namespace PCSystemInformation.UI
                 this.listView.Columns.Add("Приоритет", 80);
                 this.listView.Columns.Add("Имя пользователя", 120);
                 this.listView.Columns.Add("Количество потоков", 120);
+                this.listView.ContextMenuStrip = this.ContextMenu;
             }));
         }
 

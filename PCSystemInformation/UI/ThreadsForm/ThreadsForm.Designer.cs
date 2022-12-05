@@ -50,7 +50,7 @@ namespace PCSystemInformation.UI.ThreadsForm
             this.listView.MinimumSize = new System.Drawing.Size(141, 294);
             this.listView.Name = "listView";
             this.listView.ShowItemToolTips = true;
-            this.listView.Size = new System.Drawing.Size(220, 391);
+            this.listView.Size = new System.Drawing.Size(229, 391);
             this.listView.TabIndex = 2;
             this.listView.UseCompatibleStateImageBehavior = false;
             this.listView.View = System.Windows.Forms.View.Details;
@@ -67,6 +67,7 @@ namespace PCSystemInformation.UI.ThreadsForm
             // 
             // button2
             // 
+            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button2.Location = new System.Drawing.Point(65, 408);
             this.button2.Name = "button2";
@@ -80,13 +81,15 @@ namespace PCSystemInformation.UI.ThreadsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(225, 451);
+            this.ClientSize = new System.Drawing.Size(234, 451);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.listView);
             this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(250, 490);
             this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(250, 490);
             this.Name = "ThreadsForm";
-            this.Text = "ThreadsForm";
+            this.Text = "Потоки";
             this.Load += new System.EventHandler(this.ThreadsForm_Load);
             this.ResumeLayout(false);
 

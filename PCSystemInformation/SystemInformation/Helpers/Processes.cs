@@ -30,7 +30,7 @@ namespace PCSystemInformation.SystemInformation {
                 foreach (Process process1 in processes)
                 {
                     ProcessThreadCollection threads = process1.Threads;
-                    MyProcesses.Add(new MyProcess(process1.Id, process1.ProcessName, process1.PrivateMemorySize64 / (1024 * 1024) + " МБ", process1.BasePriority, GetProcessOwnerByID(process1), threads.Count));
+                    MyProcesses.Add(new MyProcess(process1.Id, process1.ProcessName, process1.PrivateMemorySize64 / (1024 * 1024) + " МБ", process1.BasePriority, GetProcessOwnerByID(process1), threads.Count, process1));
                     ThreadsInfo.Add(process1.Id.ToString(), threads);
                 }
             }

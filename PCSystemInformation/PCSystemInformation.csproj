@@ -106,6 +106,12 @@
     <Compile Include="UI\SensorPanel\SensorPanel.Designer.cs">
       <DependentUpon>SensorPanel.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\Tests\Tests.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Tests\Tests.Designer.cs">
+      <DependentUpon>Tests.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\ThreadsForm\ThreadsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -130,6 +136,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\SensorPanel\SensorPanel.resx">
       <DependentUpon>SensorPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Tests\Tests.resx">
+      <DependentUpon>Tests.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\ThreadsForm\ThreadsForm.resx">
       <DependentUpon>ThreadsForm.cs</DependentUpon>
