@@ -50,10 +50,10 @@ namespace PCSystemInformation.UI.SensorPanel
                 label2.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Bold, GraphicsUnit.Point, ((byte)(204)));
                 label2.ForeColor = Color.White;
                 label2.AutoSize = true;
-                label2.Location = new Point(label.Size.Width + 100, previous);
+                label2.Location = new Point(label.Size.Width + 80, previous);
                 previous += 30;
                 ProgressBar progressBar = new ProgressBar();
-                progressBar.Size = new Size(250, 18);
+                progressBar.Size = new Size(220, 18);
                 if ((int)item.Value < 150) progressBar.Value = (int)item.Value;
                 else progressBar.Value = 150;
                 progressBar.Maximum = 151;
