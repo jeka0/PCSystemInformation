@@ -12,7 +12,7 @@ namespace PCSystemInformation.Models
         private PerformanceCounter cpucounter;
         public CPUUsage()
         {
-            cpucounter = new PerformanceCounter("Processor Information", "% Processor Time", "_Total");
+            cpucounter = new PerformanceCounter("Processor Information", "% Processor Utility", "_Total");
         }
 
         public float getValue()
