@@ -26,7 +26,7 @@ namespace PCSystemInformation.SystemInformation
         public String GetAdapterDACType() { return GetStringInformation("AdapterDACType", searcher); }
 
         public String GetAdapterRAM() { 
-            double value = Convert.ToDouble(GetInformation("AdapterRAM", searcher));
+            double value = Convert.ToDouble(GetInformation("AdapterRAM"));
             value /= 1024 * 1024;
             return value.ToString() + " Мб";
         }
@@ -101,7 +101,7 @@ namespace PCSystemInformation.SystemInformation
 
         public String GetVideoProcessor() { return GetStringInformation("VideoProcessor", searcher); }
 
-        private object GetInformation(String str, ManagementObjectSearcher searcher)
+        private object GetInformation(String str)
         {
             return querObj[str];
         }
@@ -109,7 +109,7 @@ namespace PCSystemInformation.SystemInformation
         {
             try
             {
-                return GetInformation(str, searcher).ToString();
+                return GetInformation(str).ToString();
             }
             catch { return "-"; }
         }

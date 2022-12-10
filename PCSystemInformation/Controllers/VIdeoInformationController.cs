@@ -68,7 +68,6 @@ namespace PCSystemInformation.Controllers
             block.elements.Add(new Element("Тип ЦАП адаптера", videoInformation.GetAdapterDACType()));
             block.elements.Add(new Element("Имя класса создания", videoInformation.GetCreationClassName()));
             block.elements.Add(new Element("ID устройства", videoInformation.GetDeviceID()));
-            block.elements.Add(new Element("Дата драйвера", videoInformation.GetDriverDate()));//?
             block.elements.Add(new Element("Версия драйвера", videoInformation.GetDriverVersion()));
             block.elements.Add(new Element("Код ошибки диспетчера конфигурации", videoInformation.GetConfigManagerErrorCode()));
             block.elements.Add(new Element("Конфигурация пользователя диспетчера конфигураций", videoInformation.GetConfigManagerUserConfig()));

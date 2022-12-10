@@ -25,7 +25,7 @@ namespace PCSystemInformation.UI
             if (threads == null)
             {
                 threads = new List<Thread>();
-                for (int i = 0; i < 14; i++)
+                for (int i = 0; i < 8; i++)
                 {
                     Thread tread = new Thread(() => { while (true) { } });
                     threads.Add(tread);

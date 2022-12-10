@@ -101,7 +101,7 @@ namespace PCSystemInformation
             // 
             this.открытьOSDПанельToolStripMenuItem.Name = "открытьOSDПанельToolStripMenuItem";
             this.открытьOSDПанельToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
-            this.открытьOSDПанельToolStripMenuItem.Text = "OSD";
+            this.открытьOSDПанельToolStripMenuItem.Text = "OSD панель";
             this.открытьOSDПанельToolStripMenuItem.Click += new System.EventHandler(this.OSDToolStripMenuItem_Click);
             // 
             // панельДатчиковToolStripMenuItem
