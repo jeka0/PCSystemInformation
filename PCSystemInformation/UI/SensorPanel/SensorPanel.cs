@@ -55,9 +55,9 @@ namespace PCSystemInformation.UI.SensorPanel
                 previous += 30;
                 ProgressBar progressBar = new ProgressBar();
                 progressBar.Size = new Size(220, 18);
+                progressBar.Maximum = 120;
                 if ((int)item.Value < 120) progressBar.Value = (int)item.Value;
                 else progressBar.Value = 120;
-                progressBar.Maximum = 121;
                 progressBar.Location = new Point(20, previous);
                 previous += 30;
                 temps.Add(item.Key, new Temp(label2, progressBar));
