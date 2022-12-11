@@ -23,6 +23,7 @@ namespace PCSystemInformation.UI.SensorPanel
         {
             InitializeComponent();
             this.form = form;
+            TopMost = true;
             this.temps = new Dictionary<String, Temp>();
             this.temperature = new CpuTemperature();
         }

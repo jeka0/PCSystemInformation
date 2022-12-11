@@ -24,6 +24,7 @@ namespace PCSystemInformation.UI.OSD
         public OSDForm(Form1 form)
         {
             InitializeComponent();
+            TopMost = true;
             this.form = form;
         }
 
